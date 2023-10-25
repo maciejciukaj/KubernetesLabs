@@ -1,19 +1,3 @@
-# Lab 3
+# Kubernetes Labs
 
-1. Start by creating a yaml configuration file (sidecar-pod.yaml)
-
-2. Then use the apply command to create/update the pod
-
-```console
-kubectl apply -f sidecar-pod.yaml
-```
-
-3. Create a port forwarding connection for nginx
-```console
-kubectl port-forward -n lab3 sidecar-pod 8080:80
-```
-
-4. Check the content of the data.log file on localhost:8080
-```console
-curl http://localhost:8080/date.log
-```
+<em> <strong> Please select the appropriate branch with the name of the lab you are looking for </strong></em>
