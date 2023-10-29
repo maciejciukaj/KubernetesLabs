@@ -1,6 +1,6 @@
 # Lab 4
 
-#### 1. Start by creating a yaml file (namespace.yaml) responsible for creating and configuration of the lab4 namespace
+#### 1. Start by creating a yaml file (namespace.yaml) responsible for creation and configuration of the lab4 namespace
 
 ```console
 kubectl apply -f namespace.yaml
