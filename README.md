@@ -256,6 +256,14 @@ kubectl apply -f op-stepcd.yaml
 ```
 ![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/f6d7592a-b74b-4a35-a890-6b282e789154)
 
+## Step 4
+
+```console
+kubectl get all
+```
+
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/192e3d96-a729-4a06-a039-d23321446e78)
+
 
 
 
