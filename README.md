@@ -187,3 +187,75 @@ jobs:
 
 ![Zrzut ekranu 2024-01-10 184009](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/3067c343-8eb9-40f4-9e0b-477ca8e59358)
 [Link to workflow](https://github.com/maciejciukaj/lab10_source_repo/actions/runs/7478696014)
+
+## Step 3
+
+### *op-stepcd.yaml* 👇
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: stepcd
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: gitops
+          containers:
+            - name: zad2gitops
+              image: maciejciukaj/zad2gitops
+              command: [sh, -e, -c]
+              args:
+                - git clone https://github.com/maciejciukaj/lab10_config_repo.git /tmp/lab10_config_repo && find /tmp/lab10_config_repo -name '*.yaml' -exec kubectl apply -f {} \;
+```
+
+### *dockerfile* 👇
+
+```dockerfile
+FROM alpine:latest
+  
+RUN apk update && \
+    apk add --no-cache git curl && \
+    apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community kubectl
+CMD ["/bin/sh"]
+```
+
+```console
+kubectl create sa gitops
+kubectl create clusterrolebinding gitops-admin --clusterrole=cluster-admin --serviceaccount default:gitops
+```
+
+### Building a docker image
+
+```console
+docker build -t maciejciukaj/zad2gitops .
+```
+
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/dec94d8e-a80a-4d95-b7b5-49c58327b58b)
+
+
+### Pushing a docker image to DockerHub
+
+```console
+docker push maciejciukaj/zad2gitops:latest
+```
+
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/5754ad7d-63bf-4ccd-bbb5-7a30140a068b)
+
+
+### Creating and running a cronjob
+
+```console
+kubectl apply -f op-stepcd.yaml
+```
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/f6d7592a-b74b-4a35-a890-6b282e789154)
+
+
+
+
