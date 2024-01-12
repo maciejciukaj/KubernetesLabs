@@ -186,7 +186,6 @@ jobs:
 ### Workflow completed successfully 👍
 
 ![Zrzut ekranu 2024-01-10 184009](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/3067c343-8eb9-40f4-9e0b-477ca8e59358)
-[Link to workflow](https://github.com/maciejciukaj/lab10_source_repo/actions/runs/7478696014)
 
 ## Step 3
 
@@ -262,8 +261,27 @@ kubectl apply -f op-stepcd.yaml
 kubectl get all
 ```
 
-![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/192e3d96-a729-4a06-a039-d23321446e78)
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/b0d75e2e-026d-4647-a3f9-0ba38146603b)
 
+
+```console
+minikube tunnel
+curl -h "Host: zad2.lab" http://localhost
+```
+
+
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/89c37609-234e-4bb3-a8e8-9c01afd0ee82)
+
+### Change of app version
+
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/fa6b172c-4f03-4a23-b77d-dcb134747b9e)
+
+
+### New image version 1.0.3
+
+![image](https://github.com/maciejciukaj/KubernetesLabs/assets/86522973/b12f8575-775a-4da7-9b02-9224ade4b24f)
+
+### 🚧 This is where I ran into a problem. After changing the version in the index.html file, the automatic commit always takes place to version 1.0.2, so the version does not change to 1.0.3. Also, I'm getting a version-related error in the workflow. Unfortunately, I did not find a solution to the problem 🚧
 
 
 
