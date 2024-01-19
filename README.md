@@ -26,7 +26,7 @@ docker push maciejciukaj/lab12_repo:lab12
 kubectl create secret docker-registry mykey --docker-server=docker.io --docker-username=maciejciukaj --docker-password=MY_PASSWORD --docker-email=MY_EMAIL
 ```
 
-### Pod manifest
+### [Pod manifest](https://github.com/maciejciukaj/KubernetesLabs/blob/lab12/lab12.yaml)
 
 ```yaml
 apiVersion: v1
